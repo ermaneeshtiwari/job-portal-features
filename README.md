@@ -1,52 +1,83 @@
-# Snake Water Gun Game
+# AI-Powered Job Portal
 
-A simple Python game implementing the classic Snake-Water-Gun rules.
+A full-stack job portal with AI-driven resume matching, cover letter generation, and real-time job search powered by Indeed and Anthropic Claude.
 
-Rules
-- Snake drinks Water (Snake wins)
-- Water douses Gun (Water wins)
-- Gun kills Snake (Gun wins)
+## Features
 
-Terminal Usage
+- **Job Search with Filters** — Search jobs by keyword/location with date filters: Last 24 hours, 3 days, 7 days, 10 days
+- **Resume Match Score** — Calculates a % match score for each job based on matched and missing skills from your profile
+- **AI Cover Letter Generator** — Generates a personalised cover letter using the Anthropic Claude API
+- **One-Click Apply** — Instantly generates a cover letter and shows the Apply Now link
+- **Profile Sidebar with Skills Cloud** — Displays your profile, stats, and a visual skills cloud
 
-Run the game from the terminal:
+## Tech Stack
 
-```bash
-python snakeWaterGunGame.py
+| Layer    | Technology                          |
+|----------|-------------------------------------|
+| Frontend | HTML, CSS, Vanilla JavaScript       |
+| Backend  | Python (http.server)                |
+| Jobs API | Indeed MCP / Indeed API             |
+| AI       | Anthropic Claude API (claude-sonnet-4-6) |
+
+## Project Structure
+
+```
+job-portal-features/
+├── job_portal.html       # Main frontend UI
+├── job_portal.css        # Styles
+├── job_portal_server.py  # Python backend server
+└── README.md
 ```
 
-Input choices
-- `S` - Snake
-- `W` - Water
-- `G` - Gun
+## Getting Started
 
-Browser Usage
+### Prerequisites
 
-The browser version submits the player's choice to a Python Vercel function at `/api/play`.
+- Python 3.8+
+- Anthropic API key
 
-Local Browser Usage
-
-Run the local Python web server:
+### Installation
 
 ```bash
-python server.py
+git clone https://github.com/ermaneeshtiwari/job-portal-features.git
+cd job-portal-features
+pip install anthropic
 ```
 
-Then open:
+### Configuration
 
-```text
+Set your Anthropic API key as an environment variable:
+
+```bash
+export ANTHROPIC_API_KEY=your_api_key_here
+```
+
+### Run the Server
+
+```bash
+python job_portal_server.py
+```
+
+Then open your browser at:
+
+```
 http://127.0.0.1:8000
 ```
 
-Example
+## Usage
 
-```text
-Enter your choice (Snake: S, Water: W, Gun: G): S
-You chose Snake. Computer chose Water. You win!
-```
+1. **Search Jobs** — Enter a job title and location, then apply date filters to narrow results
+2. **View Match Score** — Click any job to see your resume match % with matched and missing skills highlighted
+3. **Generate Cover Letter** — Click "Generate AI Cover Letter" to get a tailored cover letter
+4. **One-Click Apply** — Use the Apply Now button to open the job application directly
 
-Notes
-- This is a single-round game for both terminal and browser use.
+## API Endpoints
 
-Contributing
-- Feel free to open issues or submit pull requests to improve the game.
+| Endpoint           | Method | Description                        |
+|--------------------|--------|------------------------------------|
+| `/api/jobs`        | GET    | Search jobs with filters           |
+| `/api/cover-letter`| POST   | Generate AI cover letter           |
+
+## Contributing
+
+Feel free to open issues or submit pull requests to improve the portal.
